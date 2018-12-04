@@ -2,8 +2,4 @@
 
 <h3>I don't know, just trying something</h3>
 <p>So try to go to another link</p>
-<<<<<<< Updated upstream
 Dududu
-=======
-Nanana
->>>>>>> Stashed changes
