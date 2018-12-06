@@ -11,10 +11,23 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('welcome');
 });
 
 Route::fallback(function(){
     return view('notfound');
+});
+
+Route::get('about', function(){
+    return "<h1>Hi! This is about page</h1>";
+});
+
+Route::match(['get','post'],'foo', function(){
+    // return redirect('about');
+    return redirect('test');
+});
+
+route::get('test', function(){
+    return "TEST";
 });
