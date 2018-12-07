@@ -28,6 +28,10 @@ Route::match(['get','post'],'foo', function(){
     return redirect('test');
 });
 
-route::get('test', function(){
+Route::get('test', function(){
     return "TEST";
+});
+
+Route::get('blog', function(){
+    
 });
