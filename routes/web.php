@@ -32,6 +32,4 @@ Route::get('test', function(){
     return "TEST";
 });
 
-Route::get('blog', function(){
-    
-});
+Route::get('blog', 'PostController@index');

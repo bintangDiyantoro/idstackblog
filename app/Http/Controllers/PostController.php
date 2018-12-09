@@ -19,10 +19,10 @@ class PostController extends Controller
             ['id'=> 3, 'title'=>'Post 3', 'body'=>'body in 3rd post'],
             ['id'=> 4, 'title'=>'Post 4', 'body'=>'body in 4th post']
         ];
-        ?><ul>
+        ?> <ul>
         <?php foreach ($posts as $post): ?>
             <li>
-                
+                <a href=""><?= $post['title']; ?></a>
             </li>
         <?php endforeach; ?>
         </ul><?php
