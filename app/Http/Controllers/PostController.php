@@ -23,7 +23,7 @@ class PostController extends Controller
         <?php foreach ($posts as $post): ?>
             <li>
                 <!-- <a href="/post/<?= $post['id'];?>"><?= $post['title']; ?></a> -->
-                <a href="<?= route('post.detail',$post['id']);?>"><?= $post['title']; ?></a>
+                <a href="<?= route('post.show',$post['id']);?>"><?= $post['title']; ?></a>
             </li>
         <?php endforeach; ?>
         </ul><?php
@@ -47,7 +47,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return dd($request->all());
     }
 
     /**
@@ -58,7 +58,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return "This is show controller by ID = ".$id;
     }
 
     /**
@@ -69,7 +69,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return "This is Edit controller by ID = ".$id;
     }
 
     /**

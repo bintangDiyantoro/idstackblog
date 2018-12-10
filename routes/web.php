@@ -23,16 +23,16 @@ Route::fallback(function(){
     return view('notfound');
 });
 
-Route::get('about', function(){
+Route::get('/about', function(){
     return "<h1>Hi! This is about page</h1>";
 });
 
-Route::match(['get','post'],'foo', function(){
+Route::match(['get','post'],'/foo', function(){
     // return redirect('test');
     return redirect('test');
 });
 
-Route::get('test', function(){
+Route::get('/test', function(){
     return "TEST";
 });
 
@@ -61,12 +61,14 @@ Route::get('test', function(){
      <?php
 // });
 
-Route::get('blog','PostController@index');
+Route::get('/blog','PostController@index');
+// Route::get('/post/create','PostController@create');
+// Route::post('/post/store','PostController@store');
 
-// Route::get('post/{id}', function($id){
-Route::get('post/{id}', ['as' => 'post.detail', function($id){
-    echo $id; ?></br><?php
-    echo "Body post in ID ". $id;
-}]);
+// // Route::get('post/{id}', function($id){
+// Route::get('/post/{id}', ['as' => 'post.detail', function($id){
+//     echo $id; ?></br><?php
+//     echo "Body post in ID ". $id;
+// }]);
 
-Route::get('create','PostController@create');
+Route::resource('post','PostController');
