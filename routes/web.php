@@ -36,22 +36,32 @@ Route::get('test', function(){
     return "TEST";
 });
 
-Route::get('blog', function(){
-    $posts = [
-        ['id'=> 1, 'title'=>'Post 1', 'body'=>'body in 1st post'],
-        ['id'=> 2, 'title'=>'Post 2', 'body'=>'body in 2nd post'],
-        ['id'=> 3, 'title'=>'Post 3', 'body'=>'body in 3rd post'],
-        ['id'=> 4, 'title'=>'Post 4', 'body'=>'body in 4th post']
-    ];
-    ?> <ul>
-    <?php foreach ($posts as $post): ?>
-        <li>
-            <!-- <a href="/post/<?= $post['id'];?>"><?= $post['title']; ?></a> -->
-            <a href="<?= route('post.detail',$post['id']);?>"><?= $post['title']; ?></a>
-        </li>
-    <?php endforeach; ?>
-    </ul><?php
-});
+// Route::get('blog', function(){
+//     $posts = [
+//         ['id'=> 1, 'title'=>'Post 1', 'body'=>'body in 1st post'],
+//         ['id'=> 2, 'title'=>'Post 2', 'body'=>'body in 2nd post'],
+//         ['id'=> 3, 'title'=>'Post 3', 'body'=>'body in 3rd post'],
+//         ['id'=> 4, 'title'=>'Post 4', 'body'=>'body in 4th post']
+//     ];
+//     ?> 
+    <!-- <ul> -->
+     <?php 
+    //  foreach ($posts as $post): ?>
+         <!-- <li> -->
+             <!-- <a href="/post/<?php 
+            //  echo $post['id'];?>"><?php 
+            //  echo $post['title']; ?></a> -->
+             <!-- <a href="<?php
+            // echo route('post.detail',$post['id']);?>"><?php
+            // echo $post['title']; ?></a> -->
+         <!-- </li> -->
+     <?php 
+    // endforeach; ?>
+     <!-- </ul> -->
+     <?php
+// });
+
+Route::get('blog','PostController@index');
 
 // Route::get('post/{id}', function($id){
 Route::get('post/{id}', ['as' => 'post.detail', function($id){
@@ -59,4 +69,4 @@ Route::get('post/{id}', ['as' => 'post.detail', function($id){
     echo "Body post in ID ". $id;
 }]);
 
-// Route::get('blog', 'PostController@index');
+Route::get('create','PostController@create');

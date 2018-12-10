@@ -22,7 +22,8 @@ class PostController extends Controller
         ?> <ul>
         <?php foreach ($posts as $post): ?>
             <li>
-                <a href=""><?= $post['title']; ?></a>
+                <!-- <a href="/post/<?= $post['id'];?>"><?= $post['title']; ?></a> -->
+                <a href="<?= route('post.detail',$post['id']);?>"><?= $post['title']; ?></a>
             </li>
         <?php endforeach; ?>
         </ul><?php
@@ -35,7 +36,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
