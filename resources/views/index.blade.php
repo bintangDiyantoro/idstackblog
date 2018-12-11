@@ -1,10 +1,10 @@
 @extends('layout.app')
 
-@section('title')
+<!-- @section('title')
     Post Page
-@stop
+@show -->
 
-$section('body')
+<!-- $section('body') -->
 <h1>Post Page</h1>
     @if(count($posts)!=0)
     <ul>
@@ -15,4 +15,4 @@ $section('body')
     @else
     <p>No Data</p>
     @endif
-@stop
+@show
