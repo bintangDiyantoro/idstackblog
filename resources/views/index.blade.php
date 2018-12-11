@@ -1,4 +1,4 @@
-@extends('layout.app')
+<!-- @extends('layout.app') -->
 
 <!-- @section('title')
     Post Page
@@ -15,4 +15,4 @@
     @else
     <p>No Data</p>
     @endif
-@show
+<!-- @show -->
