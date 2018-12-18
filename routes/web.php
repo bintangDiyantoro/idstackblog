@@ -54,3 +54,13 @@ Route::get('/insert/{uid}', function($uid){
     alert('Data successfully added!');
     </script>";
 });
+
+Route::get('/read', function(){
+    // $query = DB::select('SELECT * FROM posts WHERE user_id = ?', [1]);
+    // $query = DB::select('SELECT * FROM posts');
+    // $query = DB::table('posts')->select('title','body')->where('id',1)->get(); //get() for display array data type
+    $query = DB::table('posts')->first(); //first() for object data type display, but but only show the first data
+    echo "<pre>";
+    return var_dump($query);
+    echo "</pre>";
+});
