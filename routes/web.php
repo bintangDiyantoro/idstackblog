@@ -39,3 +39,18 @@ Route::get('/test', function(){
 Route::get('/blog','PostController@index');
 
 Route::resource('post','PostController');
+
+Route::get('/insert/{uid}', function($uid){
+    // DB::insert('INSERT INTO posts (title, body, user_id) VALUES (?,?,?)', ['learning PHP using Laravel', 'Laravel is the best PHP framework on Earth', 1]);
+
+    $data = [
+        'title' => 'first post',
+        'body' => 'content for first post',
+        'user_id' => $uid
+    ];
+
+    DB::table('posts')->insert($data);
+    echo "<script>
+    alert('Data successfully added!');
+    </script>";
+});
