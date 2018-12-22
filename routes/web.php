@@ -1,5 +1,5 @@
 <?php
-
+use App\Post; //to use eloquent model
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -102,4 +102,15 @@ Route::get('/delete/{uid}', function($uid){
         alert('Data not deleted!');
         </script>";
     }
+});
+//-----------------------------------ELOQUENT-----------------------------------
+Route::get('/posts', function(){
+    $posts = Post::all();
+    return $posts;
+    // echo $posts;
+});
+
+Route::get('/find/{id}', function($id){
+    $posts = Post::find($id);
+    return $posts;
 });
