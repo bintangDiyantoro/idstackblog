@@ -40,12 +40,12 @@ Route::get('/blog','PostController@index');
 
 Route::resource('post','PostController');
 
-Route::get('/insert/{uid}', function($uid){
+Route::get('/insert/{num}/{uid}', function($num,$uid){
     // DB::insert('INSERT INTO posts (title, body, user_id) VALUES (?,?,?)', ['learning PHP using Laravel', 'Laravel is the best PHP framework on Earth', 1]);
 
     $data = [
-        'title' => 'first post',
-        'body' => 'content for first post',
+        'title' => $num.' post',
+        'body' => 'content for the '.$num.' post',
         'user_id' => $uid
     ];
 
@@ -84,6 +84,22 @@ Route::get('/update/{id}', function($id){
     else{
         echo "<script>
         alert('Data not updated!');
+        </script>";
+    }
+});
+
+Route::get('/delete/{uid}', function($uid){
+    // $deleted = DB::delete('DELETE FROM posts WHERE id = ?', [$id]);
+    $deleted = DB::table('posts')->where('user_id', $uid)->delete();
+    // return $deleted;
+    if($deleted){
+        echo "<script>
+        alert('Data successfully deleted!');
+        </script>";
+    }
+    else{
+        echo "<script>
+        alert('Data not deleted!');
         </script>";
     }
 });
