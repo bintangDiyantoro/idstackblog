@@ -64,3 +64,26 @@ Route::get('/read', function(){
     return var_dump($query);
     echo "</pre>";
 });
+
+Route::get('/update/{id}', function($id){
+    // $updated = DB::update('UPDATE posts SET title = "Second post" WHERE id = ?', [$id]);
+    // return $updated;
+    $data = [
+        'title' => 'Third post',
+        'body' => 'content for third post',
+        'user_id' => 3
+    ];
+
+    $updated = DB::table('posts')->where('id', $id)->update($data);
+
+    if($updated){
+        echo "<script>
+        alert('Data successfully updated!');
+        </script>";
+    }
+    else{
+        echo "<script>
+        alert('Data not updated!');
+        </script>";
+    }
+});
