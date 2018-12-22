@@ -114,3 +114,8 @@ Route::get('/find/{id}', function($id){
     $posts = Post::find($id);
     return $posts;
 });
+
+Route::get('/findwhere/{uid}/{sum}', function($uid,$sum){
+    $result = Post::where('user_id', $uid)->orderby('id', 'asc')->take($sum)->get();
+    return $result;
+});
