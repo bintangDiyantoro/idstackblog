@@ -136,3 +136,9 @@ Route::get('/createpost/{uid}', function($uid){
 Route::get('/updatepost/{id}/{uid}', function($id,$uid){
     Post::find($id)->update(['title' => 'update title', 'body' => 'the example of updated body', 'user_id' => $uid]);
 });
+
+Route::get('/deletepost/{id}', function($id){
+    // Post::destroy([$id,$id2]);
+    // Post::where('user_id', $uid)->delete();
+    Post::find($id)->delete();
+});
