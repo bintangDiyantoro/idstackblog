@@ -119,3 +119,16 @@ Route::get('/findwhere/{uid}/{sum}', function($uid,$sum){
     $result = Post::where('user_id', $uid)->orderby('id', 'asc')->take($sum)->get();
     return $result;
 });
+
+Route::get('/create/{uid}', function($uid){
+    $post = new Post();
+    $post->title = 'Another Post';
+    $post->body = 'Content of another body';
+    $post->user_id = $uid;
+    $post->save();
+});
+
+Route::get('/createpost/{uid}', function($uid){
+    $post = Post::create(['title' => 'title example', 'body' => 'the example of the body', 'user_id' => $uid]);
+    return $post;
+});
