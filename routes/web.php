@@ -132,3 +132,7 @@ Route::get('/createpost/{uid}', function($uid){
     $post = Post::create(['title' => 'title example', 'body' => 'the example of the body', 'user_id' => $uid]);
     return $post;
 });
+
+Route::get('/updatepost/{id}/{uid}', function($id,$uid){
+    Post::find($id)->update(['title' => 'update title', 'body' => 'the example of updated body', 'user_id' => $uid]);
+});
