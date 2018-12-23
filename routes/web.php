@@ -128,3 +128,7 @@ Route::get('/create/{uid}', function($uid){
     $post->save();
 });
 
+Route::get('/createpost/{uid}', function($uid){
+    $post = Post::create(['title' => 'title example', 'body' => 'the example of the body', 'user_id' => $uid]);
+    return $post;
+});
