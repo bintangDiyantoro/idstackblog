@@ -142,3 +142,7 @@ Route::get('/deletepost/{id}', function($id){
     // Post::where('user_id', $uid)->delete();
     Post::find($id)->delete();
 });
+
+Route::get('/softdelete/{id}', function($id){
+    Post::destroy($id);
+});
