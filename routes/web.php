@@ -142,3 +142,43 @@ Route::get('/deletepost/{id}', function($id){
     // Post::where('user_id', $uid)->delete();
     Post::find($id)->delete();
 });
+
+Route::get('/softdelete/{id}', function($id){
+    Post::destroy($id);
+});
+
+Route::get('/trash', function(){
+    // $trash = Post::withTrashed()->get(); //show all data + trashed data
+    $trash = Post::onlyTrashed()->get(); //show trashed data only
+    return $trash;
+});
+
+Route::get('/restore', function(){
+    $restore = Post::onlyTrashed()->restore(); //restore trashed data
+    return $restore;
+});
+
+Route::get('/forcedelete/{id}', function($id){
+    echo "<script>
+        if(confirm('Are you sure delete data with id = ". $id."?')){
+            location.href='/fd/".$id."';
+        }
+    </script>";
+});
+
+Route::get('/fd/{id}', function($id){
+    // $forceDelete = Post::onlyTrashed()->where('id', $id)->forceDelete();
+    // $forceDelete = Post::onlyTrashed()->forceDelete();
+    $forceDelete = Post::find($id)->forceDelete();
+
+    if($forceDelete){
+        echo "<script>
+            alert('Data succesfully deleted!');
+        </script>";
+    }
+    else{
+        echo "<script>
+            alert('Data not deleted!');
+        </script>";
+    }
+});
