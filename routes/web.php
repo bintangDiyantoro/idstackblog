@@ -146,3 +146,14 @@ Route::get('/deletepost/{id}', function($id){
 Route::get('/softdelete/{id}', function($id){
     Post::destroy($id);
 });
+
+Route::get('/trash', function(){
+    // $trash = Post::withTrashed()->get(); //show all data + trashed data
+    $trash = Post::onlyTrashed()->get(); //show trashed data only
+    return $trash;
+});
+
+Route::get('/restore', function(){
+    $restore = Post::onlyTrashed()->restore(); //restore trashed data
+    return $restore;
+});
