@@ -182,3 +182,6 @@ Route::get('/fd/{id}', function($id){
         </script>";
     }
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
