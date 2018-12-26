@@ -120,16 +120,18 @@ Route::get('/findwhere/{uid}/{sum}', function($uid,$sum){
     return $result;
 });
 
-Route::get('/create/{uid}', function($uid){
+// Route::get('/create/{uid}', function($uid){
+Route::get('/create', function(){
     $post = new Post();
     $post->title = 'Another Post';
     $post->body = 'Content of another body';
-    $post->user_id = $uid;
+    $post->user_id = Auth::user()->id;
     $post->save();
 });
 
-Route::get('/createpost/{uid}', function($uid){
-    $post = Post::create(['title' => 'title example', 'body' => 'the example of the body', 'user_id' => $uid]);
+// Route::get('/createpost/{uid}', function($uid){
+Route::get('/createpost', function(){
+    $post = Post::create(['title' => 'title example', 'body' => 'the example of the body', 'user_id' => Auth::user()->id]);
     return $post;
 });
 
@@ -185,3 +187,9 @@ Route::get('/fd/{id}', function($id){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/user', function(){
+//     return Auth::user();
+// });
+
+Route::get('/user', 'HomeController@user');
