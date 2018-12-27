@@ -197,3 +197,7 @@ Route::get('/user', 'HomeController@user');
 Route::get('/admin', function(){
     return "Hi, this is admin page";
 })->middleware(['role','auth']);
+
+Route::get('/member', function(){
+    return 'Halaman member';
+});
